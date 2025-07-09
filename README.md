@@ -1,69 +1,60 @@
-# React + TypeScript + Vite
+# Team Dashboard Front
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação front-end para visualização de uma tabela de colaboradores, com funcionalidades de busca, formatação e layout responsivo.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React.js
+- TypeScript
+- Vite
+- ESLint
+- Prettier
+- Husky
+- lint-staged
+- Commitlint
+- json-server
+- Yarn
+- Integração com Jira e GitHub para mapeamentos de tarefas
 
-## Expanding the ESLint configuration
+## 🔧 Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Funcionalidades da Aplicação
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Exibe colaboradores com:
+  - Imagem
+  - Nome
+  - Cargo
+  - Data de admissão (formatada)
+  - Telefone (formatado)
+- Filtro por nome, cargo e telefone
+- Layout responsivo (mobile e desktop)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Funcionalidades de Qualidade de Código
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **ESLint**: Análise estática de código com regras TypeScript e React
+- **Prettier**: Formatação automática de código
+- **Husky**: Git hooks para automação de tarefas
+- **lint-staged**: Execução de linters apenas em arquivos modificados
+- **Commitlint**: Validação de mensagens de commit seguindo Conventional Commits
+- **TypeScript**: Verificação de tipos em tempo de desenvolvimento
+- **Branch lint**: Verificação de nomes de branch seguindo padrão Conventional Commits
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📦 Instalação
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Clone o repositório
+git clone https://github.com/JonasJs/team-dashboard-front.git
+cd team-dashboard-front
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Instale as dependências
+yarn
+
+# Configure os git hooks
+yarn prepare
+
+# Rode o servidor fake
+npx json-server db.json --watch --port 3001
+
+# Inicie o projeto
+yarn dev
 ```
