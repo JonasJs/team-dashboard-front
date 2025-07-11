@@ -13,7 +13,8 @@
     "type-check": "tsc --noEmit",
     "preview": "vite preview",
     "prepare": "husky",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "gen:css-types": "npx typed-css-modules src --pattern \"**/**.module.css\" --verbose"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -26,10 +27,12 @@
     ]
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
     "eslint-plugin-react-dom": "^1.52.2",
     "eslint-plugin-react-x": "^1.52.2",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
