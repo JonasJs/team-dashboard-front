@@ -2,6 +2,17 @@
 
 Uma aplicação front-end para visualização de uma tabela de colaboradores, com funcionalidades de busca, formatação e layout responsivo.
 
+## 🛠️ Decisões Técnicas
+
+- **Uso mínimo de bibliotecas externas**: Optei por utilizar o menor número possível de bibliotecas externas para explorar ao máximo a base de conhecimento e garantir maior controle sobre o código.
+- **Estruturação de um Design System básico:**
+  - **Tokens de design**: Implementação de tokens para padronização de cores, tamanhos, fontes, espaçamentos, etc.
+  - **Documentação dos componentes**: Criação de uma documentação inicial para os componentes, visando facilitar a reutilização e a consistência visual.
+  - **Motivação**: Com a existência de um style guide, iniciei dessa forma para garantir que, desde o início, um padrão seja seguido, promovendo a reutilização de forma simples e ágil para futuras implementações.
+    **Implementação de testes unitários**: Adotei testes unitários por serem menos custosos e por garantirem maior integridade nas entregas, facilitando a manutenção e evolução do código.
+- **Tipagem dos componentes e estilos**: Utilização de tipagem para garantir consistência e segurança do código.
+- **Separação estruturada das responsabilidades**: As tipagens, regras de negócio, estilizações e variantes dos componentes estão separados, visando melhorar a manutenção do projeto, desacoplar as responsabilidades e facilitar a escalabilidade.
+
 ## 🚀 Tecnologias
 
 - React.js
@@ -15,6 +26,9 @@ Uma aplicação front-end para visualização de uma tabela de colaboradores, co
 - json-server
 - Yarn
 - Integração com Jira e GitHub para mapeamentos de tarefas
+- Css Module
+- vite-plugin-dts
+- typed-css-modules
 
 ## 🔧 Funcionalidades
 

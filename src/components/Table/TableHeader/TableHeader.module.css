@@ -1,0 +1,74 @@
+.container {
+  max-width: 100%;
+  overflow-x: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+
+  padding: var(--spacing-8) var(--spacing-20);
+  background-color: var(--color-blue-primary);
+
+  border-radius: 8px 8px 0px 0px;
+}
+
+.cell {
+  min-width: 0;
+  max-width: 100%;
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+
+  padding-block: var(--spacing-8);
+
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--color-white);
+  word-break: break-word;
+}
+
+.fixedWidth {
+  flex: 0 0 auto;
+}
+
+.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+.sortable:hover {
+  opacity: 0.8;
+}
+
+.alignLeft {
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.alignCenter {
+  text-align: center;
+  justify-content: center;
+}
+
+.alignRight {
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-white);
+}
+
+.sortIcon {
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
