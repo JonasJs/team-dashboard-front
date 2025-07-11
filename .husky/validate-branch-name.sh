@@ -2,7 +2,7 @@
 
 branch_name=$(git rev-parse --abbrev-ref HEAD)
 
-valid_pattern="^(feat|fix|docs|style|refactor|test|chore|hotfix|release)/[a-z0-9-]+$"
+valid_pattern="^(main|feat|fix|docs|style|refactor|test|chore|hotfix|release)/[a-z0-9-]+$"
 
 if [[ ! $branch_name =~ $valid_pattern ]]; then
   echo "❌ Nome de branch inválido: '$branch_name'"

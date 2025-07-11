@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import type { TableColumn } from '@/components/Table/Table.types';
-import { TableHeader } from '@components/index';
+import { Icon, Input, TableHeader } from '@components/index';
 import type { SortDirection } from '@/components/Table/TableHeader/TableHeader.types';
+
+import styles from './Home.module.css';
 
 const columns: TableColumn[] = [
   {
@@ -39,25 +41,41 @@ const columns: TableColumn[] = [
 ];
 
 export function HomePage() {
+  const [searchValue, setSearchValue] = useState('');
   const [sortColumn, setSortColumn] = useState<string>();
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
 
   const handleSort = (columnKey: string, direction: SortDirection) => {
     setSortColumn(columnKey);
     setSortDirection(direction);
-
-    // Aqui você implementaria a lógica de ordenação dos dados
     console.log(`Ordenando por ${columnKey} em ordem ${direction}`);
   };
 
+  const searchIcon = useMemo(() => <Icon name="search" />, []);
+
   return (
     <div className="container">
-      <TableHeader
-        columns={columns}
-        onSort={handleSort}
-        sortColumn={sortColumn}
-        sortDirection={sortDirection}
-      />
+      <div className={styles.content}>
+        <h2>{searchValue}</h2>
+        <Input
+          placeholder="Pesquisar"
+          iconRight={searchIcon}
+          autoComplete="off"
+          spellCheck={false}
+          onChange={(e) => {
+            setSearchValue(e.target.value);
+          }}
+        />
+
+        <div role="table" aria-label="Cabeçalho da tabela de funcionários">
+          <TableHeader
+            columns={columns}
+            onSort={handleSort}
+            sortColumn={sortColumn}
+            sortDirection={sortDirection}
+          />
+        </div>
+      </div>
     </div>
   );
 }
