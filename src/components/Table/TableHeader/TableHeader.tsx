@@ -44,10 +44,21 @@ function TableHeaderComponent({
               minWidth: column.width ? undefined : '80px',
             }}
             className={tableHeaderCellStyles}
-            role={column.sortable ? 'button' : 'columnheader'}
-            tabIndex={column.sortable ? 0 : undefined}
+            role="columnheader"
+            tabIndex={column.sortable ? 0 : -1}
             aria-label={
-              column.sortable ? `Ordenar por ${column.label}` : column.label
+              column.sortable
+                ? `${column.label}, ordenável. ${sortColumn === column.key ? `Atualmente ordenado ${sortDirection === 'asc' ? 'crescente' : 'decrescente'}` : 'Não ordenado'}. Pressione Enter ou Espaço para ordenar.`
+                : column.label
+            }
+            aria-sort={
+              column.sortable && sortColumn === column.key
+                ? sortDirection === 'asc'
+                  ? 'ascending'
+                  : 'descending'
+                : column.sortable
+                  ? 'none'
+                  : undefined
             }
             onClick={() => {
               handleClickCell(column);
@@ -58,7 +69,7 @@ function TableHeaderComponent({
           >
             <span title={column.label}>{column.label}</span>
             {column.sortable && (
-              <div className={styles.sortIcon}>
+              <div className={styles.sortIcon} aria-hidden="true">
                 <Icon
                   size={14}
                   name={getSortIcon(column.key)}
@@ -69,7 +80,13 @@ function TableHeaderComponent({
           </div>
         );
       })}
-      {isMobile && <div className={styles.circle}></div>}
+      {isMobile && (
+        <div
+          className={styles.circle}
+          role="presentation"
+          aria-hidden="true"
+        ></div>
+      )}
     </div>
   );
 }

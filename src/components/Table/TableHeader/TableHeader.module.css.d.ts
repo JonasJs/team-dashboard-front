@@ -3,10 +3,10 @@ declare const styles: {
   readonly alignLeft: string;
   readonly alignRight: string;
   readonly cell: string;
-  readonly container: string;
-  readonly sortable: string;
-  readonly fixedWidth: string;
   readonly circle: string;
+  readonly container: string;
+  readonly fixedWidth: string;
   readonly sortIcon: string;
+  readonly sortable: string;
 };
 export = styles;
