@@ -1,0 +1,20 @@
+.table {
+  width: 100%;
+  caption-side: bottom;
+  border-collapse: collapse;
+}
+
+.alignLeft {
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+
+.alignCenter {
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+.alignRight {
+  text-align: right !important;
+  justify-content: flex-end !important;
+}

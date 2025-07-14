@@ -1,0 +1,9 @@
+.head {
+  padding: var(--spacing-16);
+}
+
+.headContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+}
