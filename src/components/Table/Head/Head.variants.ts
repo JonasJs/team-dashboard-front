@@ -1,22 +1,20 @@
 import { cva } from 'class-variance-authority';
-import styles from './TableHeader.module.css';
+import styles from './Head.module.css';
+import stylesTable from '../Table.module.css';
 import type { TextAlign } from '../Table.types';
 
 const alignVariants: Record<TextAlign, string> = {
-  left: styles.alignLeft,
-  center: styles.alignCenter,
-  right: styles.alignRight,
+  left: stylesTable.alignLeft,
+  center: stylesTable.alignCenter,
+  right: stylesTable.alignRight,
 };
 
-export const tableHeaderCellVariants = cva(styles.cell, {
+export const HeadVariants = cva(styles.headContent, {
   variants: {
     sortable: {
       true: styles.sortable,
     },
     textAlign: alignVariants,
-    hasFixedWidth: {
-      true: styles.fixedWidth,
-    },
   },
   defaultVariants: {
     textAlign: 'left',
