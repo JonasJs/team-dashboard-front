@@ -11,6 +11,7 @@ import {
 } from '@/components/Table';
 
 import styles from './Home.module.css';
+import { useHomePage } from './useHomePage';
 
 type SortDirection = 'asc' | 'desc';
 
@@ -21,15 +22,6 @@ interface Column {
   align: TextAlign;
   sortable?: boolean;
   hideOnMobile?: boolean;
-}
-
-interface Employee {
-  id: string;
-  photo: string;
-  name: string;
-  position: string;
-  admissionDate: string;
-  phone: string;
 }
 
 const COLUMNS: Column[] = [
@@ -67,22 +59,12 @@ const COLUMNS: Column[] = [
   },
 ];
 
-const EMPLOYEES: Employee[] = [
-  {
-    id: 'EMP001',
-    photo: 'https://randomuser.me/api/portraits/men/1.jpg',
-    name: 'João Silva',
-    position: 'Desenvolvedor Front-end',
-    admissionDate: '2021-03-15',
-    phone: '(11) 91234-5678',
-  },
-];
-
 export function HomePage() {
   const [searchValue, setSearchValue] = useState('');
   const [sortColumn, setSortColumn] = useState<string>();
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc');
 
+  const { employees } = useHomePage();
   const handleSort = (columnKey: string) => {
     if (sortColumn === columnKey) {
       setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
@@ -130,18 +112,18 @@ export function HomePage() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {EMPLOYEES.map((employee) => (
+            {employees.map((employee) => (
               <TableRow key={employee.id}>
                 <TableCell align="left" width="120px">
                   <img
                     className={styles.photo}
-                    src={employee.photo}
+                    src={employee.image}
                     alt={employee.name}
                   />
                 </TableCell>
                 <TableCell align="left">{employee.name}</TableCell>
-                <TableCell align="center">{employee.position}</TableCell>
-                <TableCell align="center">{employee.admissionDate}</TableCell>
+                <TableCell align="center">{employee.job}</TableCell>
+                <TableCell align="center">{employee.admission_date}</TableCell>
                 <TableCell align="center">{employee.phone}</TableCell>
               </TableRow>
             ))}

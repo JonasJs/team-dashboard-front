@@ -11,9 +11,6 @@ const alignVariants: Record<TextAlign, string> = {
 
 export const HeadVariants = cva(styles.headContent, {
   variants: {
-    sortable: {
-      true: styles.sortable,
-    },
     textAlign: alignVariants,
   },
   defaultVariants: {

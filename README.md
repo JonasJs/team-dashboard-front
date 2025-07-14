@@ -12,6 +12,7 @@ Uma aplicação front-end para visualização de uma tabela de colaboradores, co
 - **Implementação de testes unitários**: Adotei testes unitários por serem menos custosos e por garantirem maior integridade nas entregas, facilitando a manutenção e evolução do código.
 - **Tipagem dos componentes e estilos**: Utilização de tipagem para garantir consistência e segurança do código.
 - **Separação estruturada das responsabilidades**: As tipagens, regras de negócio, estilizações e variantes dos componentes estão separados, visando melhorar a manutenção do projeto, desacoplar as responsabilidades e facilitar a escalabilidade.
+- **Ky**: Utilização do Ky para requisições HTTP, para garantir uma comunicação assíncrona e eficiente com o backend.
 
 ### Estratégia do Componente Table
 
@@ -59,6 +60,7 @@ O componente Table foi desenvolvido seguindo uma arquitetura modular e extensív
 - vite-plugin-dts
 - typed-css-modules
 - class-variance-authority
+- Ky
 
 ## 🔧 Funcionalidades
 
