@@ -24,7 +24,6 @@ function TableHeadComponent({
   });
 
   const headStyles = HeadVariants({
-    sortable: sortable,
     textAlign: align,
   });
 
@@ -44,7 +43,7 @@ function TableHeadComponent({
       <div className={headStyles}>
         {children}
         {sortable && (
-          <div className={styles.sortIcon} aria-hidden="true">
+          <div>
             <Icon size={14} name={getSortIcon()} color="currentColor" />
           </div>
         )}
