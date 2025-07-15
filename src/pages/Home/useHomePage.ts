@@ -12,7 +12,10 @@ export function useHomePage(): UseHomePage {
   const [sortColumn, setSortColumn] = useState<string>();
   const [sortDirection, setSortDirection] = useState<SortDirection>();
   const [searchTerm, setSearchTerm] = useState('');
+  const [employeesTotalItems, setEmployeesTotalItems] = useState(0);
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState('10');
 
   const isMobile = useIsMobile();
 
@@ -52,16 +55,31 @@ export function useHomePage(): UseHomePage {
 
   const fetchEmployees = useCallback(async () => {
     try {
-      const employees = await employeeServices.getEmployees({
+      const isSearching = Boolean(debouncedSearchTerm);
+
+      const response = await employeeServices.getEmployees({
         search: debouncedSearchTerm,
+        page: isSearching ? 1 : currentPage,
+        limit: isSearching ? 10 : Number(itemsPerPage),
       });
-      setEmployees(employees);
+
+      setEmployees(response.employees);
+      setEmployeesTotalItems(response.totalItems);
+
+      if (isSearching) {
+        setCurrentPage(1);
+        setItemsPerPage('10');
+      }
     } catch (error) {
       console.error('Error fetching employees:', error);
       setEmployees([]);
     }
-  }, [debouncedSearchTerm]);
+  }, [debouncedSearchTerm, currentPage, itemsPerPage]);
 
+  function handleSetItemsPerPage(itemsPerPage: string) {
+    setItemsPerPage(itemsPerPage);
+    setCurrentPage(1);
+  }
   useEffect(() => {
     void fetchEmployees();
   }, [fetchEmployees]);
@@ -74,5 +92,9 @@ export function useHomePage(): UseHomePage {
     handleSort,
     setSearchTerm,
     searchTerm,
+    employeesTotalItems,
+    setCurrentPage,
+    handleSetItemsPerPage,
+    itemsPerPage: Number(itemsPerPage),
   };
 }

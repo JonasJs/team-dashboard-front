@@ -4,6 +4,7 @@ import { Icon, Input } from '@/components';
 import { useMemo } from 'react';
 
 import styles from './Home.module.css';
+import { Pagination } from '@/components/Pagination/Pagination';
 
 export function HomePage() {
   const {
@@ -14,6 +15,10 @@ export function HomePage() {
     sortDirection,
     setSearchTerm,
     searchTerm,
+    employeesTotalItems,
+    setCurrentPage,
+    handleSetItemsPerPage,
+    itemsPerPage,
   } = useHomePage();
 
   const searchIcon = useMemo(() => <Icon name="search" />, []);
@@ -32,13 +37,23 @@ export function HomePage() {
           }}
         />
       </div>
-      <TableEmployees
-        columns={columns}
-        employees={employees}
-        onSort={handleSort}
-        sortColumn={sortColumn}
-        sortDirection={sortDirection}
-      />
+      <div className={styles.tableContainer}>
+        <TableEmployees
+          columns={columns}
+          employees={employees}
+          onSort={handleSort}
+          sortColumn={sortColumn}
+          sortDirection={sortDirection}
+        />
+        {employeesTotalItems > 10 && employees.length > 0 && (
+          <Pagination
+            totalItems={employeesTotalItems}
+            itemsPerPage={itemsPerPage}
+            onPageChange={setCurrentPage}
+            setItemsPerPage={handleSetItemsPerPage}
+          />
+        )}
+      </div>
     </div>
   );
 }
