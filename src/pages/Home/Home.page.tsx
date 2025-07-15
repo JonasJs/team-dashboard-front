@@ -15,7 +15,7 @@ export function HomePage() {
     <div className="container">
       <div className={styles.header}>
         <h1>Funcionários</h1>
-        <Input placeholder="Pesquisar" iconRight={searchIcon} />
+        <Input name="search" placeholder="Pesquisar" iconRight={searchIcon} />
       </div>
       <TableEmployees
         columns={columns}

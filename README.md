@@ -14,6 +14,9 @@ Uma aplicação front-end para visualização de uma tabela de colaboradores, co
 - **Separação estruturada das responsabilidades**: As tipagens, regras de negócio, estilizações e variantes dos componentes estão separados, visando melhorar a manutenção do projeto, desacoplar as responsabilidades e facilitar a escalabilidade.
 - **Ky**: Utilização do Ky para requisições HTTP, para garantir uma comunicação assíncrona e eficiente com o backend.
 
+- Filtro: A rege de negocio: ser possível realizar pesquisa na tabela por meio de um input. O input de pesquisa deve permitir filtrar dados por cargo, nome e telefone.
+  Todos filtro o ideal é que seja sempre feit do lado do back end, ainda mas pensando na escalabilidad do projeto onde teremos muitos mais itens e precisaremos paginar, dito isso, como estamos usando o json-server ele faze um busca full-text em todas as propriedades para dar visibilidade a logica repliquei o funcionamentod o jsonserver mas aplicando no arquivo #api/employees.ts que é o que utilizo para subir os dados para vercel/"prod", para seja possivel testar o serviço online.
+
 ### Estratégia do Componente Table
 
 O componente Table foi desenvolvido seguindo uma arquitetura modular e extensível:

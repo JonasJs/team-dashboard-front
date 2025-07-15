@@ -6,16 +6,17 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "vercel-build": "yarn build",
+    "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "type-check": "tsc --noEmit",
-    "preview": "vite preview",
     "prepare": "husky",
     "pre-commit": "lint-staged",
     "gen:css-types": "npx typed-css-modules src --pattern \"**/**.module.css\" --verbose",
-    "mock:api": "npx json-server --watch src/mock-api/db.json --port 3001"
+    "json-server": "npx json-server --watch ./db.json --port 3000"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -28,10 +29,12 @@
     ]
   },
   "dependencies": {
+    "@vercel/node": "^5.3.5",
     "class-variance-authority": "^0.7.1",
     "eslint-plugin-react-dom": "^1.52.2",
     "eslint-plugin-react-x": "^1.52.2",
     "framer-motion": "^12.23.5",
+    "json-server": "0.17.4",
     "ky": "^1.8.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -42,6 +45,7 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.30.1",
+    "@types/node": "^24.0.14",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
@@ -54,6 +58,7 @@
     "prettier": "^3.6.2",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
-    "vite": "^7.0.3"
+    "vite": "^7.0.3",
+    "vite-plugin-compression": "^0.5.1"
   }
 }

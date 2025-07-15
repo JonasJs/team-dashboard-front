@@ -3,7 +3,7 @@ import { z } from 'zod';
 export type Env = z.infer<typeof envSchema>;
 
 export const envSchema = z.object({
-  API_BASE_URL: z.string().default('http://localhost:3001'),
+  API_BASE_URL: z.string().default('http://localhost:3000'),
 });
 
 const _env = envSchema.safeParse({
