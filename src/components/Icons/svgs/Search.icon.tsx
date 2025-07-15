@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import type { SVGProps } from 'react';
 
-export function Search(props: SVGProps<SVGSVGElement>) {
+function SearchComponent(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22,3 +23,6 @@ export function Search(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export const Search = memo(SearchComponent);
+SearchComponent.displayName = 'Search';

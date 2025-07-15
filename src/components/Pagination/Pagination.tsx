@@ -29,7 +29,14 @@ export function Pagination({
   return (
     <div className={styles.pagination}>
       <div className={styles.selectContainer}>
-        <select onChange={handleSelectItemsPerPage}>
+        <label htmlFor="items-per-page" className={styles.visuallyHidden}>
+          Registros por página
+        </label>
+        <select
+          id="items-per-page"
+          onChange={handleSelectItemsPerPage}
+          aria-label="Selecionar número de registros por página"
+        >
           <option value="10">10</option>
           <option value="25">25</option>
           <option value="50">50</option>
@@ -44,6 +51,7 @@ export function Pagination({
             onClick={prevPage}
             disabled={currentPage === 1}
             className={`${styles.actionButton} ${currentPage === 1 ? styles.disabled : ''}`}
+            aria-label="Ir para página anterior"
           >
             <Icon name="chevron-left" />
             <span>Anterior</span>
@@ -56,6 +64,8 @@ export function Pagination({
                 handleClickButtonPage(page);
               }}
               className={`${styles.pageButton} ${currentPage === page ? styles.active : ''}`}
+              aria-label={`Ir para página ${page.toString()}`}
+              aria-current={currentPage === page ? 'page' : undefined}
             >
               {page}
             </button>
@@ -65,12 +75,13 @@ export function Pagination({
             type="button"
             disabled={currentPage === totalPages}
             className={`${styles.actionButton} ${currentPage === totalPages ? styles.disabled : ''}`}
+            aria-label="Ir para próxima página"
           >
             <span>Próximo</span>
             <Icon name="chevron-right" />
           </button>
         </div>
-        <span>
+        <span className={styles.resultsInfo}>
           Mostrando {startItem} - {endItem} de {totalItems} registros
         </span>
       </div>

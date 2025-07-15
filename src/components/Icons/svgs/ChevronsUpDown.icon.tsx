@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import type { SVGProps } from 'react';
 
-export function ChevronsUpDown(props: SVGProps<SVGSVGElement>) {
+function ChevronsUpDownComponent(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20,3 +21,6 @@ export function ChevronsUpDown(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export const ChevronsUpDown = memo(ChevronsUpDownComponent);
+ChevronsUpDownComponent.displayName = 'ChevronsUpDown';

@@ -7,6 +7,8 @@ declare const styles: {
   readonly pageButton: string;
   readonly pagination: string;
   readonly paginationControls: string;
+  readonly resultsInfo: string;
   readonly selectContainer: string;
+  readonly visuallyHidden: string;
 };
 export = styles;
