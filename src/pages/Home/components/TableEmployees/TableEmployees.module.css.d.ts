@@ -4,6 +4,7 @@ declare const styles: {
   readonly body: string;
   readonly photo: string;
   readonly table: string;
+  readonly tableEmpty: string;
   readonly tableHeader: string;
 };
 export = styles;

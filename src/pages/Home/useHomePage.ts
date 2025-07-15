@@ -1,15 +1,18 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import { employeeServices } from '@/domain';
 import type { Employee } from '@/domain/Employee/employee.types';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { COLUMNS } from './home.constants';
 import type { UseHomePage } from './home.types';
 import type { SortDirection } from '@/components/Table';
+import { useDebounce } from '@/hooks/useDebounce';
 
 export function useHomePage(): UseHomePage {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [sortColumn, setSortColumn] = useState<string>();
   const [sortDirection, setSortDirection] = useState<SortDirection>();
+  const [searchTerm, setSearchTerm] = useState('');
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
   const isMobile = useIsMobile();
 
@@ -47,20 +50,21 @@ export function useHomePage(): UseHomePage {
     }
   }
 
+  const fetchEmployees = useCallback(async () => {
+    try {
+      const employees = await employeeServices.getEmployees({
+        search: debouncedSearchTerm,
+      });
+      setEmployees(employees);
+    } catch (error) {
+      console.error('Error fetching employees:', error);
+      setEmployees([]);
+    }
+  }, [debouncedSearchTerm]);
+
   useEffect(() => {
-    const fetchEmployees = async () => {
-      try {
-        const employees = await employeeServices.getEmployees();
-
-        setEmployees(employees);
-      } catch (error) {
-        console.error('Error fetching employees:', error);
-        return [];
-      }
-    };
-
     void fetchEmployees();
-  }, []);
+  }, [fetchEmployees]);
 
   return {
     employees: sortedEmployees,
@@ -68,5 +72,7 @@ export function useHomePage(): UseHomePage {
     sortColumn,
     sortDirection,
     handleSort,
+    setSearchTerm,
+    searchTerm,
   };
 }
