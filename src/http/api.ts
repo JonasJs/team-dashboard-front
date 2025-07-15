@@ -4,6 +4,7 @@ import { env } from '@/config/environment';
 
 const API_URL = env.API_BASE_URL;
 
+console.log('API_URL => ', API_URL);
 export const api = ky.create({
   prefixUrl: API_URL,
 });

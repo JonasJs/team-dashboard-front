@@ -1,11 +1,5 @@
 export * from './Table';
 export * from './Table.types';
-// export * from './TableHeader';
-// export * from './TableHead';
-// export * from './TableBody';
-// export * from './TableRow';
-// export * from './TableCell';
-// export * from './TableFooter';
 export * from './Header/Header';
 export * from './Header/Header.types';
 export * from './Row/Row';

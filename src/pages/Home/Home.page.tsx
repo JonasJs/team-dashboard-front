@@ -12,10 +12,10 @@ export function HomePage() {
   const searchIcon = useMemo(() => <Icon name="search" />, []);
 
   return (
-    <div className="container">
+    <div className={`${styles.home} container`}>
       <div className={styles.header}>
         <h1>Funcionários</h1>
-        <Input placeholder="Pesquisar" iconRight={searchIcon} />
+        <Input name="search" placeholder="Pesquisar" iconRight={searchIcon} />
       </div>
       <TableEmployees
         columns={columns}

@@ -11,6 +11,7 @@ export default tseslint.config([
   globalIgnores(['dist']),
   {
     files: ['**/*.{ts,tsx}'],
+    ignores: ['api/**/*.ts'],
     extends: [
       ...tseslint.configs.recommendedTypeChecked,
       ...tseslint.configs.strictTypeChecked,
@@ -29,6 +30,14 @@ export default tseslint.config([
       },
       ecmaVersion: 2020,
       globals: globals.browser,
+    },
+  },
+  {
+    files: ['api/**/*.ts'],
+    extends: [js.configs.recommended, tseslint.configs.recommended],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.node,
     },
   },
 ]);

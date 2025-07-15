@@ -39,8 +39,6 @@ export function useHomePage(): UseHomePage {
   }, [employees, sortColumn, sortDirection]);
 
   function handleSort(columnKey: string) {
-    console.log('Sorting by:', columnKey);
-
     if (sortColumn === columnKey) {
       setSortDirection((prev) => (prev === 'asc' ? 'desc' : 'asc'));
     } else {
