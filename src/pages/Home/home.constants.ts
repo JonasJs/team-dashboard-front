@@ -1,10 +1,10 @@
-import type { Column, Employee } from './home.types';
+import type { Column } from './home.types';
 
 export const COLUMNS: Column[] = [
   {
     key: 'photo',
     label: 'FOTO',
-    width: '120px',
+    width: '5%',
     align: 'left',
   },
   {
@@ -14,50 +14,26 @@ export const COLUMNS: Column[] = [
     sortable: true,
   },
   {
-    key: 'position',
+    key: 'job',
     label: 'CARGO',
     sortable: true,
     align: 'center',
     hideOnMobile: true,
+    width: '25%',
   },
   {
-    key: 'admissionDate',
+    key: 'admission_date',
     label: 'DATA DE ADMISSÃO',
     sortable: true,
-    align: 'right',
+    align: 'left',
     hideOnMobile: true,
+    width: '250px',
   },
   {
     key: 'phone',
     label: 'TELEFONE',
-    align: 'center',
+    align: 'left',
     hideOnMobile: true,
-  },
-];
-
-export const EMPLOYEES: Employee[] = [
-  {
-    id: 'EMP001',
-    photo: 'https://randomuser.me/api/portraits/men/1.jpg',
-    name: 'João Silva',
-    position: 'Desenvolvedor Front-end',
-    admissionDate: '2021-03-15',
-    phone: '(11) 91234-5678',
-  },
-  {
-    id: 'EMP002',
-    photo: 'https://randomuser.me/api/portraits/women/2.jpg',
-    name: 'Maria Oliveira',
-    position: 'Product Manager',
-    admissionDate: '2020-07-22',
-    phone: '(21) 99876-5432',
-  },
-  {
-    id: 'EMP003',
-    photo: 'https://randomuser.me/api/portraits/men/3.jpg',
-    name: 'Carlos Souza',
-    position: 'UX Designer',
-    admissionDate: '2019-11-10',
-    phone: '(31) 98888-1122',
+    width: '200px',
   },
 ];

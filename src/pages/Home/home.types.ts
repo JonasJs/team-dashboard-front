@@ -1,6 +1,5 @@
-import type { TextAlign } from '@/components/Table';
-
-export type SortDirection = 'asc' | 'desc';
+import type { SortDirection, TextAlign } from '@/components/Table';
+import type { Employee } from '@/domain/Employee/employee.types';
 
 export interface Column {
   key: string;
@@ -11,11 +10,10 @@ export interface Column {
   hideOnMobile?: boolean;
 }
 
-export interface Employee {
-  id: string;
-  photo: string;
-  name: string;
-  position: string;
-  admissionDate: string;
-  phone: string;
+export interface UseHomePage {
+  employees: Employee[];
+  columns: Column[];
+  sortColumn?: string;
+  sortDirection?: SortDirection;
+  handleSort: (columnKey: string) => void;
 }
