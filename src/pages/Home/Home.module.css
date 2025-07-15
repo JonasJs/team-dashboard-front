@@ -1,3 +1,7 @@
+.home {
+  margin-bottom: var(--spacing-40);
+}
+
 .header {
   display: flex;
   align-items: center;

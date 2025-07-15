@@ -6,6 +6,8 @@ export const envSchema = z.object({
   API_BASE_URL: z.string().default('http://localhost:3000'),
 });
 
+console.log(import.meta.env.VITE_API_BASE_URL);
+console.log('aqui => ', import.meta.env.API_BASE_URL);
 const _env = envSchema.safeParse({
   API_BASE_URL: import.meta.env.VITE_API_BASE_URL as string,
 });

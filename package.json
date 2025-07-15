@@ -15,7 +15,7 @@
     "type-check": "tsc --noEmit",
     "prepare": "husky",
     "pre-commit": "lint-staged",
-    "gen:css-types": "npx typed-css-modules src --pattern \"**/**.module.css\" --verbose",
+    "css-types": "npx typed-css-modules src --pattern \"**/**.module.css\" --verbose --watch",
     "json-server": "npx json-server --watch ./db.json --port 3000"
   },
   "lint-staged": {

@@ -12,7 +12,7 @@ export function HomePage() {
   const searchIcon = useMemo(() => <Icon name="search" />, []);
 
   return (
-    <div className="container">
+    <div className={`${styles.home} container`}>
       <div className={styles.header}>
         <h1>Funcionários</h1>
         <Input name="search" placeholder="Pesquisar" iconRight={searchIcon} />

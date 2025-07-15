@@ -11,7 +11,7 @@ import type { GetEmployeesParams } from './employee.dto';
  */
 export async function getEmployees({
   page = 1,
-  limit = 100,
+  limit = 10,
   search = '',
 }: GetEmployeesParams = {}): Promise<Employee[]> {
   return api
