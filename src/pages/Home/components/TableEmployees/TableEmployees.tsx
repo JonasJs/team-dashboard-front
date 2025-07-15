@@ -14,6 +14,7 @@ import { MobileRow } from './Mobile/MobileRow';
 import { useState } from 'react';
 import { DesktopRow } from './Desktop/DesktopRow';
 import type { SortDirection } from '@/components/Table/Table.types';
+import noContentIcon from '@assets/no-content-icon.svg';
 
 export function TableEmployees({
   columns,
@@ -71,17 +72,31 @@ export function TableEmployees({
         </TableRow>
       </TableHeader>
       <TableBody className={styles.body}>
-        {employees.map((employee) =>
-          isMobile ? (
-            <MobileRow
-              key={employee.id}
-              employee={employee}
-              isExpanded={expandedRows.includes(employee.id)}
-              onExpand={handleExpandRow}
-            />
-          ) : (
-            <DesktopRow key={employee.id} {...employee} />
+        {employees.length > 0 ? (
+          employees.map((employee) =>
+            isMobile ? (
+              <MobileRow
+                key={employee.id}
+                employee={employee}
+                isExpanded={expandedRows.includes(employee.id)}
+                onExpand={handleExpandRow}
+              />
+            ) : (
+              <DesktopRow key={employee.id} {...employee} />
+            )
           )
+        ) : (
+          <tr key="no-data" className={styles.tableEmpty}>
+            <td colSpan={columns.length + 1}>
+              <img
+                src={noContentIcon}
+                width={100}
+                height={100}
+                alt="Nenhuma informação encontrada."
+              />
+              <p>Nenhuma informação encontrada.</p>
+            </td>
+          </tr>
         )}
       </TableBody>
     </Table>

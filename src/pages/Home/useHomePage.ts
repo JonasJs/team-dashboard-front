@@ -1,15 +1,21 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import { employeeServices } from '@/domain';
 import type { Employee } from '@/domain/Employee/employee.types';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { COLUMNS } from './home.constants';
 import type { UseHomePage } from './home.types';
 import type { SortDirection } from '@/components/Table';
+import { useDebounce } from '@/hooks/useDebounce';
 
 export function useHomePage(): UseHomePage {
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [sortColumn, setSortColumn] = useState<string>();
   const [sortDirection, setSortDirection] = useState<SortDirection>();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [employeesTotalItems, setEmployeesTotalItems] = useState(0);
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState('10');
 
   const isMobile = useIsMobile();
 
@@ -47,20 +53,36 @@ export function useHomePage(): UseHomePage {
     }
   }
 
-  useEffect(() => {
-    const fetchEmployees = async () => {
-      try {
-        const employees = await employeeServices.getEmployees();
+  const fetchEmployees = useCallback(async () => {
+    try {
+      const isSearching = Boolean(debouncedSearchTerm);
 
-        setEmployees(employees);
-      } catch (error) {
-        console.error('Error fetching employees:', error);
-        return [];
+      const response = await employeeServices.getEmployees({
+        search: debouncedSearchTerm,
+        page: isSearching ? 1 : currentPage,
+        limit: isSearching ? 10 : Number(itemsPerPage),
+      });
+
+      setEmployees(response.employees);
+      setEmployeesTotalItems(response.totalItems);
+
+      if (isSearching) {
+        setCurrentPage(1);
+        setItemsPerPage('10');
       }
-    };
+    } catch (error) {
+      console.error('Error fetching employees:', error);
+      setEmployees([]);
+    }
+  }, [debouncedSearchTerm, currentPage, itemsPerPage]);
 
+  function handleSetItemsPerPage(itemsPerPage: string) {
+    setItemsPerPage(itemsPerPage);
+    setCurrentPage(1);
+  }
+  useEffect(() => {
     void fetchEmployees();
-  }, []);
+  }, [fetchEmployees]);
 
   return {
     employees: sortedEmployees,
@@ -68,5 +90,11 @@ export function useHomePage(): UseHomePage {
     sortColumn,
     sortDirection,
     handleSort,
+    setSearchTerm,
+    searchTerm,
+    employeesTotalItems,
+    setCurrentPage,
+    handleSetItemsPerPage,
+    itemsPerPage: Number(itemsPerPage),
   };
 }

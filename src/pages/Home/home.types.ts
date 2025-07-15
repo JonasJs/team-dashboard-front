@@ -16,4 +16,10 @@ export interface UseHomePage {
   sortColumn?: string;
   sortDirection?: SortDirection;
   handleSort: (columnKey: string) => void;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+  searchTerm: string;
+  employeesTotalItems: number;
+  setCurrentPage: (page: number) => void;
+  itemsPerPage: number;
+  handleSetItemsPerPage: (itemsPerPage: string) => void;
 }

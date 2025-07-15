@@ -6,3 +6,8 @@ export interface Employee {
   phone: string;
   image: string;
 }
+
+export interface getEmployeesResponse {
+  employees: Employee[];
+  totalItems: number;
+}

@@ -1,5 +1,4 @@
 import { api } from '@/http/api';
-import type { Employee } from './employee.types';
 import type { GetEmployeesParams } from './employee.dto';
 
 /**
@@ -13,14 +12,12 @@ export async function getEmployees({
   page = 1,
   limit = 10,
   search = '',
-}: GetEmployeesParams = {}): Promise<Employee[]> {
-  return api
-    .get('employees', {
-      searchParams: {
-        _page: page,
-        _limit: limit,
-        q: search,
-      },
-    })
-    .json<Employee[]>();
+}: GetEmployeesParams = {}) {
+  return api.get('employees', {
+    searchParams: {
+      _page: page,
+      _limit: limit,
+      q: search,
+    },
+  });
 }

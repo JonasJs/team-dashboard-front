@@ -32,3 +32,13 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+.tableEmpty {
+  height: 400px;
+  text-align: center;
+  color: var(--color-gray-20);
+}
+.tableEmpty img {
+  margin-bottom: var(--space-8);
+  opacity: 0.5;
+}
