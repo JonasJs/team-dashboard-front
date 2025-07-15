@@ -2,15 +2,15 @@ import { memo } from 'react';
 import type { InputProps } from './Input.types';
 import styles from './Input.module.css';
 
-const InputComponent = ({
+function InputComponent({
   ref,
   placeholder,
   iconRight: IconRight,
   className,
   ...rest
-}: InputProps) => {
+}: InputProps) {
   return (
-    <div className={`${styles.container} ${className ?? ''}`}>
+    <div className={`${styles.containerInput} ${className ?? ''}`}>
       <input
         ref={ref}
         aria-label={placeholder}
@@ -20,7 +20,7 @@ const InputComponent = ({
       {IconRight && <div className={styles.iconRight}>{IconRight}</div>}
     </div>
   );
-};
+}
 
 export const Input = memo(InputComponent);
 InputComponent.displayName = 'Input';

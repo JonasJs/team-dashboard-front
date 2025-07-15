@@ -4,7 +4,7 @@
   gap: var(--spacing-4);
 }
 
-.container {
+.containerInput {
   display: flex;
   align-items: center;
 
@@ -20,13 +20,13 @@
   will-change: border-color;
 }
 
-.container:focus-within {
+.containerInput:focus-within {
   border-color: var(--color-blue-primary);
 
   outline: none;
 }
 
-.container input {
+.containerInput input {
   flex: 1;
   padding-block: var(--spacing-8);
 
@@ -42,7 +42,7 @@
   background: transparent;
 }
 
-.container input::placeholder {
+.containerInput input::placeholder {
   color: var(--color-gray-20);
 }
 
@@ -52,11 +52,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .container {
+  .containerInput {
     transition: none;
   }
 }
 
-.container {
+.containerInput {
   contain: layout style;
 }

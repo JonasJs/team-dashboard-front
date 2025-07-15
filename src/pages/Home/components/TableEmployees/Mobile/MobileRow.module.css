@@ -1,0 +1,23 @@
+.noBorder {
+  border-bottom: none !important;
+}
+
+.expandedRow {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+
+  font-size: 14px;
+
+  border-bottom: 1px dotted var(--color-gray-10);
+}
+
+.expandedRow:not(:last-child) {
+  margin-bottom: var(--spacing-8);
+}
+
+.expandedRow:last-child {
+  margin-bottom: var(--spacing-24);
+}
+
+/*  */

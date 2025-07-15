@@ -2,6 +2,7 @@
   width: 100%;
   caption-side: bottom;
   border-collapse: collapse;
+  border-spacing: 0;
 }
 
 .alignLeft {

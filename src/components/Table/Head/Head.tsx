@@ -37,10 +37,17 @@ function TableHeadComponent({
       style={{
         width,
         minWidth: width ? undefined : '80px',
+        cursor: sortable ? 'pointer' : undefined,
       }}
       {...props}
     >
-      <div className={headStyles}>
+      <div
+        className={headStyles}
+        style={{
+          width,
+          minWidth: width ? undefined : '80px',
+        }}
+      >
         {children}
         {sortable && (
           <div>
