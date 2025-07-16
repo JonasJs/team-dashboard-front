@@ -2,6 +2,8 @@
 
 Uma aplicação front-end para visualização de uma tabela de colaboradores, com funcionalidades de busca, formatação e layout responsivo.
 
+#### Demo: [https://team-dashboard-front.vercel.app](https://team-dashboard-front.vercel.app)
+
 ## 📋 Índice
 
 - [Funcionalidades](#-funcionalidades)
